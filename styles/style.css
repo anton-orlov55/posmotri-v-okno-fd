@@ -304,9 +304,6 @@ ol {
   background-color: #545050;
 }
 
-.content__card-link_current {
-}
-
 .content__card-link_current:focus {
   background-color: #545050;
   outline: 0px;
