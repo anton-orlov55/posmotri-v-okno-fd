@@ -55,28 +55,25 @@ ol {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
   grid-template-areas: "result content__details";
-  align-items: end;
+  align-items: center;
   width: 1140px;
-  margin: 133px 3px 133px 30px;
+  margin: 133px 30px 133px 30px;
 }
 
 .result {
   grid-area: result;
   width: 711px;
-  height: 456px;
   margin: 78px 30px 0px 0px;
 }
 
 .content__details {
   grid-area: content__details;
   width: 100%;
-  height: 534px;
 }
 .search-form {
   display: flex;
   justify-content: space-between;
   width: 711px;
-  height: 54px;
 }
 
 .content__list-container {
@@ -96,11 +93,13 @@ ol {
 
 /* Еще раз посмотреть в описаниях object-fit */
 .result__video {
-  position: absolute;
-  object-fit: contain;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .content__list-item {
+  display: block;
   margin: 0px 0px 30px 2px;
 }
 
@@ -110,6 +109,8 @@ ol {
 }
 
 .content__video-card-thumbnail {
+  object-fit: cover;
+  object-position: center;
   width: 194px;
   height: 103px;
 }
@@ -123,7 +124,7 @@ ol {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: normal;
   font-size: 18px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .title {
@@ -131,45 +132,42 @@ ol {
   font-weight: bold;
   font-size: 75px;
   line-height: 94%;
-  margin-bottom: 0px 140px 26px 0px;
+  margin: 0px 140px 26px 0px;
   text-transform: uppercase;
 }
 
 .content__accent {
-  opacity: 10%;
+  color: #545050;
 }
 
 .content__card-link {
+  display: block;
   color: #fff;
   text-decoration: none;
 }
 
 .content__video-card-title {
   font-family: "Oswald", sans-serif;
-  font-size: 30;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: 2px;
   line-height: 100%;
   margin-bottom: 6px;
+  text-overflow: ellipsis;
 }
 
 .content__video-card-description {
   font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18;
+  font-size: 18px;
   font-weight: normal;
-  text-wrap: nowrap;
   line-height: 16.2px;
-  letter-spacing: 0px;
-  line-clamp: initial;
-}
-
-.content__video-card-thumbnail {
-  width: 194px;
-  height: 103px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .visually-hidden {
@@ -185,7 +183,6 @@ ol {
 .search-form__checkbox-list {
   display: flex;
   gap: 5px;
-  height: 22px;
   min-width: 212px;
   justify-content: space-between;
 }
@@ -196,14 +193,10 @@ ol {
   padding: 0;
 }
 
-.search-form__fieldset:has(.search-form__pseudo-checkbox) {
-  margin-left: -2px;
-}
-
 .search-form__label {
   display: flex;
   width: fit-content;
-  margin-top: 5px;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -220,12 +213,6 @@ ol {
   appearance: none;
 }
 
-/* Еще раз посмотреть в описаниях */
-.search-form__textfield:hover {
-  text-decoration: underline;
-  text-decoration-color: #1b1919;
-}
-
 .search-form__textfield:focus {
   outline: none;
 }
@@ -237,8 +224,6 @@ ol {
 }
 
 .search-form__label-text {
-  min-width: 22px;
-  min-height: 35px;
   margin-left: 5px;
 }
 
@@ -253,37 +238,30 @@ ol {
 }
 
 .search-form__label:has(:checked) .search-form__pseudo-checkbox::after {
-  position: absolute;
   content: "";
   background-color: #fff;
   width: 15px;
   height: 15px;
 }
 
-.search-form__label:hover {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
 }
 
 .button {
-  height: 34px;
+  min-height: 34px;
   border: 1px solid #fff;
   background-color: transparent;
-  font-family: 18px;
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-style: bold;
   align-self: end;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .search-form__submit-button {
   width: 194px;
-  align-items: flex-end;
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: auto;
-  letter-spacing: 0%;
 }
 
 .more-button {
@@ -310,29 +288,31 @@ ol {
 .more-button:focus {
   outline: 0;
 }
-
-.content__list-item {
-  display: block;
-  min-height: none;
+.content__card-linkfocus {
+  outline: 0;
 }
 
 .content__list {
   margin-right: 3px;
 }
 
-.content__video-card:hover {
+.content__card-link:hover {
   text-decoration: underline;
 }
 
-.content__video-card:active {
+.content__card-link:active {
   background-color: #545050;
 }
 
+.content__card-link_current {
+}
+
 .content__card-link_current:focus {
+  background-color: #545050;
   outline: 0px;
 }
 
-.content__card-link_current:focus-visible {
+:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 2px;
 }
